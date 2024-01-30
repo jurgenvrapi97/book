@@ -75,6 +75,10 @@ function ContainerBook() {
           ))}
         </Row>
       </Container>
+      <div className="text-light fixed-bottom bg-primary fs-5">
+        <p className="my-2 ">Created whit react</p>
+        <p className="my-2 p-2">I apologize for the css</p>
+      </div>
     </>
   )
 }
