@@ -6,6 +6,7 @@ import AdditionalContentExample from './components/AllertComponent'
 function App() {
   return (
     <div className="App">
+      <AdditionalContentExample />
       <NavBook />
       <ContainerBook />
     </div>
