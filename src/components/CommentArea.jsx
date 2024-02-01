@@ -47,10 +47,9 @@ class CommentArea extends Component {
                 {comment.comment}{' '}
                 <Trash
                   onClick={() => {
-                    console.log(this.props.bookId)
                     fetch(
                       'https://striveschool-api.herokuapp.com/api/comments/' +
-                        this.props.bookId,
+                        comment._id,
                       {
                         method: 'DELETE',
                         headers: {
