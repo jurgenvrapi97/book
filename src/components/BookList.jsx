@@ -83,6 +83,7 @@ class BookList extends Component {
             {booksToShow.map((book) => (
               <Col key={book.asin} className="mb-3">
                 <CardComponent
+                  idBook={book.asin}
                   title={book.title}
                   category={book.category}
                   img={book.img}
