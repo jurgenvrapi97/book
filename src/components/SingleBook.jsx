@@ -1,24 +1,16 @@
 import { Card } from 'react-bootstrap'
 import React, { Component } from 'react'
-import CommentArea from './CommentArea'
 
 class SingleBook extends Component {
-  state = {
-    clicked: false,
-  }
-
-  handleClick = () => {
-    console.log('funziona')
-    this.setState({ clicked: !this.state.clicked })
-  }
-
   render() {
-    const cardClass = this.state.clicked ? 'border border-danger' : ''
-
+    const cardClass =
+      this.props.selectedBook === this.props.idBook
+        ? 'border border-5 border-danger'
+        : ''
     return (
       <Card className={`mt-3 ${cardClass}`}>
         <Card.Img
-          onClick={this.handleClick}
+          onClick={() => this.props.handleClick(this.props.idBook)}
           style={{ height: '400px' }}
           variant="top"
           src={this.props.img}
@@ -30,7 +22,6 @@ class SingleBook extends Component {
           <Card.Text>Categoria: {this.props.category}</Card.Text>
           <Card.Text>Prezzo: {this.props.price}</Card.Text>
         </Card.Body>
-        {this.state.clicked && <CommentArea bookId={this.props.idBook} />}
       </Card>
     )
   }

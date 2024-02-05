@@ -46,30 +46,39 @@ class AddComment extends Component {
   render() {
     return (
       <>
-        <h2>Aggiungi un commento</h2>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>
-              Commento
+        <div id="stick">
+          <h2 className="text-light mb-4">Aggiungi un commento</h2>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label className="text-light">Commento</Form.Label>
               <Form.Control
-                placeholder="es.carino..."
-                type="text"
+                placeholder="Inserisci il tuo commento"
+                as="textarea"
                 name="comment"
                 onChange={this.handleChange}
+                className="mb-3"
               />
-            </Form.Label>
-            <Form.Label>
-              Valutazione
+              <Form.Label className="text-light">Valutazione</Form.Label>
               <Form.Control
-                placeholder="Da 1 a 5"
-                type="text"
+                id="rate"
+                as="select"
                 name="rate"
                 onChange={this.handleChange}
-              />
-            </Form.Label>
-          </Form.Group>
-          <Button type="submit">Add</Button>
-        </Form>
+                className="mb-3"
+              >
+                <option value="">Seleziona voto...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Control>
+            </Form.Group>
+            <Button type="submit" variant="primary">
+              Aggiungi
+            </Button>
+          </Form>
+        </div>
       </>
     )
   }

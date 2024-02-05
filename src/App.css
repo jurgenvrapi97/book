@@ -37,3 +37,12 @@
     transform: rotate(360deg);
   }
 }
+
+#comment {
+  margin-top: 336px !important;
+}
+
+#stick {
+  position: sticky;
+  top: '0';
+}

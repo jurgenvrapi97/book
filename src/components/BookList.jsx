@@ -8,7 +8,8 @@ import RomanceBooks from '../Data/romance.json'
 import ScifiBooks from '../Data/scifi.json'
 
 import React, { Component } from 'react'
-import CardComponent from './SingleBook'
+
+import SingleBook from './SingleBook'
 
 class BookList extends Component {
   state = {
@@ -79,19 +80,23 @@ class BookList extends Component {
               Risultati combacianti: {booksFilter.length}{' '}
             </h1>
           </Row>
+
           <Row lg={4} sm={2} gap={3}>
             {booksToShow.map((book) => (
-              <Col key={book.asin} className="mb-3">
-                <CardComponent
+              <Col key={book.asin} className="mb-3 col-6">
+                <SingleBook
+                  handleClick={this.props.handleClick}
                   idBook={book.asin}
                   title={book.title}
                   category={book.category}
                   img={book.img}
                   price={book.price}
+                  selectedBook={this.props.selectedBook}
                 />
               </Col>
             ))}
           </Row>
+
           <Row className="justify-content-center">
             <Col>
               <button
