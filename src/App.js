@@ -8,6 +8,7 @@ import FooterComponent from './components/FooterComponent'
 import CommentArea from './components/CommentArea'
 import { Container, Col, Row } from 'react-bootstrap'
 import { Component } from 'react'
+import StickyBox from 'react-sticky-box'
 
 class App extends Component {
   state = {
@@ -37,8 +38,10 @@ class App extends Component {
                     selectedBook={this.state.selectedBook}
                   />
                 </Col>
-                <Col id="comment" className="col-3 my-5">
-                  <CommentArea book={this.state.selectedBook} />
+                <Col className="col-3 my-5">
+                  <StickyBox offsetTop={20} offsetBottom={20}>
+                    <CommentArea book={this.state.selectedBook} />
+                  </StickyBox>
                 </Col>
               </Row>
             </Container>
