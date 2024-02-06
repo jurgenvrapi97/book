@@ -17,7 +17,6 @@ class SingleBook extends Component {
         />
         <Card.Body style={{ height: '200px' }}>
           <Card.Title>{this.props.title}</Card.Title>
-          <Card.Text>{this.props.idBook}</Card.Text>
 
           <Card.Text>Categoria: {this.props.category}</Card.Text>
           <Card.Text>Prezzo: {this.props.price}</Card.Text>
