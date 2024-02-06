@@ -1,19 +1,17 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-class AddComment extends Component {
-  state = {
-    comment: '',
-    rate: '',
-  }
+function AddComment(props) {
+  const [comment, setComment] = useState('')
+  const [rate, setRate] = useState('')
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
     const data = {
-      comment: this.state.comment,
-      rate: this.state.rate,
-      elementId: this.props.idRec,
+      comment: comment,
+      rate: rate,
+      elementId: props.idRec,
     }
     console.log(data)
     fetch('https://striveschool-api.herokuapp.com/api/comments/', {
@@ -28,10 +26,9 @@ class AddComment extends Component {
       .then((response) => {
         if (response.ok) {
           alert('hai aggiunto il commento')
-          this.setState = {
-            comment: '',
-            rate: '',
-          }
+          setComment('')
+          setRate('')
+          props.setComments((comments) => [...comments, data])
         }
       })
       .catch((error) => {
@@ -39,49 +36,53 @@ class AddComment extends Component {
       })
   }
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
+  const handleChange = (event) => {
+    const name = event.target.name
+    const value = event.target.value
+    if (name === 'comment') {
+      setComment(value)
+    } else if (name === 'rate') {
+      setRate(value)
+    }
   }
 
-  render() {
-    return (
-      <>
-        <div id="stick">
-          <h2 className="text-light mb-4">Aggiungi un commento</h2>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label className="text-light">Commento</Form.Label>
-              <Form.Control
-                placeholder="Inserisci il tuo commento"
-                as="textarea"
-                name="comment"
-                onChange={this.handleChange}
-                className="mb-3"
-              />
-              <Form.Label className="text-light">Valutazione</Form.Label>
-              <Form.Control
-                id="rate"
-                as="select"
-                name="rate"
-                onChange={this.handleChange}
-                className="mb-3"
-              >
-                <option value="">Seleziona voto...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </Form.Control>
-            </Form.Group>
-            <Button type="submit" variant="primary">
-              Aggiungi
-            </Button>
-          </Form>
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <div id="stick">
+        <h2 className="text-light mb-4">Aggiungi un commento</h2>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label className="text-light">Commento</Form.Label>
+            <Form.Control
+              placeholder="Inserisci il tuo commento"
+              as="textarea"
+              name="comment"
+              onChange={handleChange}
+              className="mb-3"
+            />
+            <Form.Label className="text-light">Valutazione</Form.Label>
+            <Form.Control
+              id="rate"
+              as="select"
+              name="rate"
+              onChange={handleChange}
+              className="mb-3"
+            >
+              <option value="">Seleziona voto...</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </Form.Control>
+          </Form.Group>
+          <Button type="submit" variant="primary">
+            Aggiungi
+          </Button>
+        </Form>
+      </div>
+    </>
+  )
 }
 
 export default AddComment
