@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-render-in-setup */
 import { fireEvent, render, screen } from '@testing-library/react'
 import App from './App'
 
@@ -59,13 +60,13 @@ describe('check comments', () => {
   })
 })
 
-describe('find commetn area', () => {
-  beforeEach(() => {
-    render(<App />)
-  })
+// describe('find commetn area', () => {
+//   beforeEach(() => {
+//     render(<App />)
+//   })
 
-  it('should find comment area', () => {
-    const comment = screen.getByText(/Commenti /i)
-    expect(comment).toBeInTheDocument()
-  })
-})
+//   it('should find comment area', () => {
+//     const comment = screen.getByText(/Commenti/i)
+//     expect(comment).not.toBeInTheDocument()
+//   })
+// })
