@@ -5,8 +5,9 @@ function SingleBook(props) {
   const cardClass =
     props.selectedBook === props.idBook ? 'border border-5 border-danger' : ''
   return (
-    <Card className={`mt-3 ${cardClass}`}>
+    <Card data-testid="book-img" className={`mt-3 ${cardClass}`}>
       <Card.Img
+        data-testid="_img"
         onClick={() => props.handleClick(props.idBook)}
         style={{ height: '400px' }}
         variant="top"

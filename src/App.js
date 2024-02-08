@@ -8,7 +8,6 @@ import FooterComponent from './components/FooterComponent'
 import CommentArea from './components/CommentArea'
 import { Container, Col, Row } from 'react-bootstrap'
 import { useState } from 'react'
-import StickyBox from 'react-sticky-box'
 
 function App() {
   const [selectedBook, setSelectedBook] = useState(null)
@@ -36,9 +35,7 @@ function App() {
                 />
               </Col>
               <Col className="col-3 my-5">
-                <StickyBox offsetTop={20} offsetBottom={20}>
-                  <CommentArea book={selectedBook} />
-                </StickyBox>
+                <CommentArea book={selectedBook} />
               </Col>
             </Row>
           </Container>

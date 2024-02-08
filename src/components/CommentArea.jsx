@@ -46,7 +46,7 @@ function CommentArea(props) {
         <h2 className="text-light">Commenti</h2>
         <ol>
           {comments.map((comment, index) => (
-            <li className="text-light" key={index}>
+            <li data-testid="comment" className="text-light" key={index}>
               {comment.comment}{' '}
               <Trash
                 onClick={() => {

@@ -35,9 +35,9 @@ function BookList(props) {
     book.title.toLowerCase().includes(bookSearched.toLocaleLowerCase())
   )
   const startIndex = (currentPage - 1) * 20
-  console.log(startIndex)
+
   const endIndex = startIndex + 20
-  console.log(endIndex)
+
   const booksToShow = booksFilter.slice(startIndex, endIndex)
 
   return (
@@ -103,6 +103,7 @@ function BookList(props) {
               Pagina precedente
             </button>
             <button
+              data-testid="next"
               className="btn btn-info mx-2"
               onClick={() => {
                 setCurrentPage(currentPage + 1)

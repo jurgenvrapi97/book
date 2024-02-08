@@ -14,6 +14,7 @@ function AddComment(props) {
       elementId: props.idRec,
     }
     console.log(data)
+
     fetch('https://striveschool-api.herokuapp.com/api/comments/', {
       method: 'POST',
       headers: {
@@ -25,10 +26,11 @@ function AddComment(props) {
     })
       .then((response) => {
         if (response.ok) {
-          alert('hai aggiunto il commento')
           setComment('')
           setRate('')
+          alert('hai aggiunto il commento')
           props.setComments((comments) => [...comments, data])
+          console.log('è stato effettivamente creato')
         }
       })
       .catch((error) => {
@@ -48,7 +50,7 @@ function AddComment(props) {
 
   return (
     <>
-      <div id="stick">
+      <div>
         <h2 className="text-light mb-4">Aggiungi un commento</h2>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
